@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management - Comic Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Comic Store</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h2>Dashboard</h2>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">
+                            <i class="fa-solid fa-home"></i>
+                            Home
+                        </a>
+                        <a href="supplier-orders.html" class="nav-link">
+                            <i class="fa-solid fa-truck"></i>
+                            Orders
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            Inventory
+                        </a>
+                        <a href="customers.html" class="nav-link">
+                            <i class="fa-solid fa-users"></i>
+                            Customers
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-gear"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div class="user-details">
+                        <p class="user-name">Admin User</p>
+                        <p class="user-email">admin@example.com</p>
+                    </div>
+                    <button class="icon-button">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="menu-button" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h1 class="page-title">Stock Management</h1>
+                <div class="header-actions">
+                    <button class="icon-button">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <div class="dropdown">
+                        <button class="icon-button dropdown-toggle">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">My Account</div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main content area -->
+            <main class="content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Stock Management</h3>
+                        <p>Manage your inventory and track stock levels</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="action-bar">
+                            <div class="search-bar">
+                                <i class="fa-solid fa-search search-icon"></i>
+                                <input type="text" id="searchProducts" placeholder="Search products" class="input">
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary" id="generateReportBtn">
+                                    <i class="fa-solid fa-download"></i>
+                                    Generate Report
+                                </button>
+                                <button class="btn btn-outline" id="lowStockBtn">
+                                    <i class="fa-solid fa-exclamation-triangle"></i>
+                                    Low Stock Items (<span id="lowStockCount">0</span>)
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Current Stock</th>
+                                        <th>Low Stock Threshold</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="stockTableBody">
+                                    <!-- Stock items will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Low Stock Modal -->
+            <div class="modal" id="lowStockModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Low Stock Items</h3>
+                        <button class="close-button" id="closeLowStockModal">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>The following items are running low on stock and may need to be replenished soon.</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Current Stock</th>
+                                        <th>Threshold</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lowStockTableBody">
+                                    <!-- Low stock items will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/stock.js"></script>
+</body>
+</html>
+

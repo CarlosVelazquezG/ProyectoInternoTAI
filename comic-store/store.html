@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="store-container">
+        <header class="store-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="store-logo">
+                        <a href="store.html">Comic Store</a>
+                    </div>
+                    <nav class="store-nav">
+                        <a href="store.html" class="active">Store</a>
+                        <a href="#">Categories</a>
+                        <a href="#">New Arrivals</a>
+                        <a href="#">Deals</a>
+                    </nav>
+                    <div class="store-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search products..." class="input">
+                        </div>
+                        <a href="cart.html" class="cart-button">
+                            <i class="fa-solid fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="store-content">
+            <div class="container">
+                <div class="store-welcome">
+                    <h1>Welcome to Comic Store</h1>
+                    <p>Discover our latest collection of comics and collectibles.</p>
+                </div>
+                
+                <div class="product-grid" id="productGrid">
+                    <!-- Products will be populated by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="store-footer">
+            <div class="container">
+                <p>Built by Comic Store. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/store.js"></script>
+</body>
+</html>
+

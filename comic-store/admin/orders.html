@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders Management - Comic Store</title>
+  <link rel="stylesheet" href="../css/admin/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+          <div class="sidebar-header">
+              <div class="logo">
+                  <img src="../img/logo.png" alt="Comic Store Logo" class="logo-img">
+                  <span>Comic Store</span>
+              </div>
+              <button class="sidebar-toggle" id="sidebarToggle">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </div>
+          
+          <div class="sidebar-content">
+              <nav class="sidebar-menu">
+                  <ul>
+                      <li class="menu-item">
+                          <a href="dashboard.html">
+                              <i class="fas fa-tachometer-alt"></i>
+                              <span>Dashboard</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="products.html">
+                              <i class="fas fa-book"></i>
+                              <span>Products</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="categories.html">
+                              <i class="fas fa-tags"></i>
+                              <span>Categories</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="publishers.html">
+                              <i class="fas fa-building"></i>
+                              <span>Publishers</span>
+                          </a>
+                      </li>
+                      <li class="menu-item active">
+                          <a href="orders.html">
+                              <i class="fas fa-shopping-cart"></i>
+                              <span>Orders</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="customers.html">
+                              <i class="fas fa-users"></i>
+                              <span>Customers</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="suppliers.html">
+                              <i class="fas fa-truck"></i>
+                              <span>Suppliers</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="supply-orders.html">
+                              <i class="fas fa-boxes"></i>
+                              <span>Supply Orders</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="users.html">
+                              <i class="fas fa-user-shield"></i>
+                              <span>Users</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="reports.html">
+                              <i class="fas fa-chart-bar"></i>
+                              <span>Reports</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="settings.html">
+                              <i class="fas fa-cog"></i>
+                              <span>Settings</span>
+                          </a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+          
+          <div class="sidebar-footer">
+              <div class="user-info">
+                  <div class="user-avatar">
+                      <span>AD</span>
+                  </div>
+                  <div class="user-details">
+                      <p class="user-name">Admin User</p>
+                      <p class="user-role">Administrator</p>
+                  </div>
+              </div>
+              <div class="logout-btn">
+                  <a href="login.html" title="Logout">
+                      <i class="fas fa-sign-out-alt"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Main Content -->
+      <div class="main-content">
+          <!-- Header -->
+          <header class="header">
+              <div class="header-left">
+                  <h1 class="page-title">Orders Management</h1>
+              </div>
+              <div class="header-right">
+                  <div class="header-search">
+                      <input type="text" placeholder="Search orders...">
+                      <button>
+                          <i class="fas fa-search"></i>
+                      </button>
+                  </div>
+                  <div class="header-actions">
+                      <button class="notification-btn">
+                          <i class="fas fa-bell"></i>
+                          <span class="badge">3</span>
+                      </button>
+                      <div class="user-dropdown">
+                          <button class="user-dropdown-toggle">
+                              <div class="user-avatar">
+                                  <span>AD</span>
+                              </div>
+                              <span class="user-name">Admin</span>
+                              <i class="fas fa-chevron-down"></i>
+                          </button>
+                          <div class="dropdown-menu">
+                              <a href="profile.html" class="dropdown-item">
+                                  <i class="fas fa-user"></i>
+                                  Profile
+                              </a>
+                              <a href="settings.html" class="dropdown-item">
+                                  <i class="fas fa-cog"></i>
+                                  Settings
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a href="login.html" class="dropdown-item">
+                                  <i class="fas fa-sign-out-alt"></i>
+                                  Logout
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </header>
+          
+          <!-- Orders Content -->
+          <div class="dashboard-content">
+              <div class="action-bar">
+                  <div class="action-buttons">
+                      <button class="btn btn-primary" id="createOrderBtn">
+                          <i class="fas fa-plus"></i>
+                          Create Order
+                      </button>
+                      <div class="dropdown">
+                          <button class="btn btn-outline dropdown-toggle">
+                              <i class="fas fa-filter"></i>
+                              Filter
+                              <i class="fas fa-chevron-down"></i>
+                          </button>
+                          <div class="dropdown-menu">
+                              <a href="#" class="dropdown-item">All Orders</a>
+                              <a href="#" class="dropdown-item">Processing</a>
+                              <a href="#" class="dropdown-item">Shipped</a>
+                              <a href="#" class="dropdown-item">Delivered</a>
+                              <a href="#" class="dropdown-item">Cancelled</a>
+                              <a href="#" class="dropdown-item">Refunded</a>
+                          </div>
+                      </div>
+                      <button class="btn btn-outline">
+                          <i class="fas fa-download"></i>
+                          Export
+                      </button>
+                  </div>
+                  <div class="search-bar">
+                      <input type="text" placeholder="Search orders..." class="input">
+                      <button class="btn btn-outline">
+                          <i class="fas fa-search"></i>
+                      </button>
+                  </div>
+              </div>
+              
+              <!-- Orders Tabs -->
+              <div class="tabs">
+                  <div class="tabs-list">
+                      <button class="tab-item active" data-tab="all">All Orders</button>
+                      <button class="tab-item" data-tab="processing">
+                          Processing
+                          <span class="badge badge-primary">5</span>
+                      </button>
+                      <button class="tab-item" data-tab="shipped">
+                          Shipped
+                          <span class="badge badge-info">8</span>
+                      </button>
+                      <button class="tab-item" data-tab="delivered">
+                          Delivered
+                          <span class="badge badge-success">12</span>
+                      </button>
+                      <button class="tab-item" data-tab="cancelled">
+                          Cancelled
+                          <span class="badge badge-danger">2</span>
+                      </button>
+                  </div>
+                  
+                  <div class="tab-content active" id="tab-all">
+                      <!-- Orders Table -->
+                      <div class="card">
+                          <div class="card-header">
+                              <h3>Orders List</h3>
+                              <p>Manage customer orders</p>
+                          </div>
+                          <div class="card-content">
+                              <div class="table-responsive">
+                                  <table class="table">
+                                      <thead>
+                                          <tr>
+                                              <th>Order ID</th>
+                                              <th>Customer</th>
+                                              <th>Date</th>
+                                              <th>Items</th>
+                                              <th>Total</th>
+                                              <th>Payment</th>
+                                              <th>Status</th>
+                                              <th>Actions</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr>
+                                              <td>#ORD-001</td>
+                                              <td>Juan Pérez</td>
+                                              <td>2025-03-05</td>
+                                              <td>3</td>
+                                              <td>$125.00</td>
+                                              <td><span class="badge bg-success">Paid</span></td>
+                                              <td><span class="badge bg-success">Delivered</span></td>
+                                              <td>
+                                                  <div class="table-actions">
+                                                      <button class="action-btn" title="View">
+                                                          <i class="fas fa-eye"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Edit">
+                                                          <i class="fas fa-edit"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Print">
+                                                          <i class="fas fa-print"></i>
+                                                      </button>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>#ORD-002</td>
+                                              <td>María González</td>
+                                              <td>2025-03-04</td>
+                                              <td>2</td>
+                                              <td>$89.50</td>
+                                              <td><span class="badge bg-success">Paid</span></td>
+                                              <td><span class="badge bg-info">Shipped</span></td>
+                                              <td>
+                                                  <div class="table-actions">
+                                                      <button class="action-btn" title="View">
+                                                          <i class="fas fa-eye"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Edit">
+                                                          <i class="fas fa-edit"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Print">
+                                                          <i class="fas fa-print"></i>
+                                                      </button>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>#ORD-003</td>
+                                              <td>Carlos Rodríguez</td>
+                                              <td>2025-03-04</td>
+                                              <td>4</td>
+                                              <td>$210.75</td>
+                                              <td><span class="badge bg-success">Paid</span></td>
+                                              <td><span class="badge bg-primary">Processing</span></td>
+                                              <td>
+                                                  <div class="table-actions">
+                                                      <button class="action-btn" title="View">
+                                                          <i class="fas fa-eye"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Edit">
+                                                          <i class="fas fa-edit"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Print">
+                                                          <i class="fas fa-print"></i>
+                                                      </button>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>#ORD-004</td>
+                                              <td>Ana Martínez</td>
+                                              <td>2025-03-03</td>
+                                              <td>1</td>
+                                              <td>$45.25</td>
+                                              <td><span class="badge bg-danger">Refunded</span></td>
+                                              <td><span class="badge bg-danger">Cancelled</span></td>
+                                              <td>
+                                                  <div class="table-actions">
+                                                      <button class="action-btn" title="View">
+                                                          <i class="fas fa-eye"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Edit">
+                                                          <i class="fas fa-edit"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Print">
+                                                          <i class="fas fa-print"></i>
+                                                      </button>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>#ORD-005</td>
+                                              <td>Luis Sánchez</td>
+                                              <td>2025-03-02</td>
+                                              <td>5</td>
+                                              <td>$178.30</td>
+                                              <td><span class="badge bg-success">Paid</span></td>
+                                              <td><span class="badge bg-success">Delivered</span></td>
+                                              <td>
+                                                  <div class="table-actions">
+                                                      <button class="action-btn" title="View">
+                                                          <i class="fas fa-eye"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Edit">
+                                                          <i class="fas fa-edit"></i>
+                                                      </button>
+                                                      <button class="action-btn" title="Print">
+                                                          <i class="fas fa-print"></i>
+                                                      </button>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                          <div class="card-footer">
+                              <div class="pagination">
+                                  <button class="btn btn-outline btn-sm">Previous</button>
+                                  <button class="btn btn-primary btn-sm">1</button>
+                                  <button class="btn btn-outline btn-sm">2</button>
+                                  <button class="btn btn-outline btn-sm">3</button>
+                                  <button class="btn btn-outline btn-sm">Next</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Order Detail Modal -->
+      <div class="modal" id="orderDetailModal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3>Order Details</h3>
+                  <button class="close-button" id="closeOrderDetailModal">
+                      <i class="fas fa-times"></i>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="order-detail-header">
+                      <div class="order-info">
+                          <h4>Order #ORD-001</h4>
+                          <p>Placed on: March 5, 2025</p>
+                      </div>
+                      <div class="order-status">
+                          <span class="badge bg-success">Delivered</span>
+                      </div>
+                  </div>
+                  
+                  <div class="order-sections">
+                      <div class="order-section">
+                          <h5>Customer Information</h5>
+                          <div class="order-customer-info">
+                              <p><strong>Name:</strong> Juan Pérez</p>
+                              <p><strong>Email:</strong> juan.perez@example.com</p>
+                              <p><strong>Phone:</strong> +52 442 123 4567</p>
+                          </div>
+                      </div>
+                      
+                      <div class="order-section">
+                          <h5>Shipping Address</h5>
+                          <p>Juan Pérez<br>
+                          Av. Constituyentes 123<br>
+                          Querétaro, 76000<br>
+                          Mexico</p>
+                      </div>
+                      
+                      <div class="order-section">
+                          <h5>Payment Information</h5>
+                          <p><strong>Method:</strong> Credit Card (Visa)</p>
+                          <p><strong>Status:</strong> <span class="badge bg-success">Paid</span></p>
+                          <p><strong>Transaction ID:</strong> TXN123456789</p>
+                      </div>
+                  </div>
+                  
+                  <div class="order-items">
+                      <h5>Order Items</h5>
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th>Product</th>
+                                      <th>Price</th>
+                                      <th>Quantity</th>
+                                      <th>Total</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>
+                                          <div class="order-product">
+                                              <img src="../img/products/batman.jpg" alt="Batman" class="product-thumbnail">
+                                              <div>
+                                                  <p class="product-name">Batman: The Dark Knight Returns</p>
+                                                  <p class="product-category">DC Comics</p>
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td>$19.99</td>
+                                      <td>2</td>
+                                      <td>$39.98</td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <div class="order-product">
+                                              <img src="../img/products/spiderman.jpg" alt="Spider-Man" class="product-thumbnail">
+                                              <div>
+                                                  <p class="product-name">Spider-Man: Miles Morales Vol. 1</p>
+                                                  <p class="product-category">Marvel</p>
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td>$17.99</td>
+                                      <td>1</td>
+                                      <td>$17.99</td>
+                                  </tr>
+                              </tbody>
+                              <tfoot>
+                                  <tr>
+                                      <td colspan="3" class="text-right"><strong>Subtotal:</strong></td>
+                                      <td>$57.97</td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="3" class="text-right"><strong>Shipping:</strong></td>
+                                      <td>$5.99</td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="3" class="text-right"><strong>Tax:</strong></td>
+                                      <td>$6.04</td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                                      <td><strong>$70.00</strong></td>
+                                  </tr>
+                              </tfoot>
+                          </table>
+                      </div>
+                  </div>
+                  
+                  <div class="order-timeline">
+                      <h5>Order Timeline</h5>
+                      <div class="timeline">
+                          <div class="timeline-item">
+                              <div class="timeline-point bg-success"></div>
+                              <div class="timeline-content">
+                                  <p class="timeline-date">March 8, 2025 - 10:30 AM</p>
+                                  <p class="timeline-title">Delivered</p>
+                                  <p class="timeline-text">Package was delivered to the customer.</p>
+                              </div>
+                          </div>
+                          <div class="timeline-item">
+                              <div class="timeline-point bg-info"></div>
+                              <div class="timeline-content">
+                                  <p class="timeline-date">March 7, 2025 - 9:15 AM</p>
+                                  <p class="timeline-title">Shipped</p>
+                                  <p class="timeline-text">Order was shipped via Express Delivery.</p>
+                              </div>
+                          </div>
+                          <div class="timeline-item">
+                              <div class="timeline-point bg-primary"></div>
+                              <div class="timeline-content">
+                                  <p class="timeline-date">March 6, 2025 - 2:45 PM</p>
+                                  <p class="timeline-title">Processing</p>
+                                  <p class="timeline-text">Order is being prepared for shipment.</p>
+                              </div>
+                          </div>
+                          <div class="timeline-item">
+                              <div class="timeline-point bg-secondary"></div>
+                              <div class="timeline-content">
+                                  <p class="timeline-date">March 5, 2025 - 3:30 PM</p>
+                                  <p class="timeline-title">Order Placed</p>
+                                  <p class="timeline-text">Customer placed the order.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-outline" id="printOrderBtn">
+                      <i class="fas fa-print"></i> Print Order
+                  </button>
+                  <button class="btn btn-primary" id="updateStatusBtn">
+                      Update Status
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="../js/admin/main.js"></script>
+  <script src="../js/admin/orders.js"></script>
+</body>
+</html>
+

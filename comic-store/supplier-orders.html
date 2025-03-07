@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Orders - Comic Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Comic Store Logo" class="logo-img">
+                    <span>Comic Store</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h2>Dashboard</h2>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">
+                            <i class="fa-solid fa-home"></i>
+                            Home
+                        </a>
+                        <a href="supplier-orders.html" class="nav-link active">
+                            <i class="fa-solid fa-truck"></i>
+                            Orders
+                        </a>
+                        <a href="stock.html" class="nav-link">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            Inventory
+                        </a>
+                        <a href="customers.html" class="nav-link">
+                            <i class="fa-solid fa-users"></i>
+                            Customers
+                        </a>
+                        <a href="store.html" class="nav-link">
+                            <i class="fa-solid fa-store"></i>
+                            Store
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-gear"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">SU</div>
+                    <div class="user-details">
+                        <p class="user-name">Supplier User</p>
+                        <p class="user-email">supplier@example.com</p>
+                    </div>
+                    <button class="icon-button">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="menu-button" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h1 class="page-title">Supplier Orders</h1>
+                <div class="header-actions">
+                    <button class="icon-button">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <div class="dropdown">
+                        <button class="icon-button dropdown-toggle">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">My Account</div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main content area -->
+            <main class="content" id="orderContent">
+                <!-- Order management tools -->
+                <div class="action-bar">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="newOrderBtn">
+                            <i class="fa-solid fa-plus"></i>
+                            New Order
+                        </button>
+                        <div class="dropdown">
+                            <button class="btn btn-outline dropdown-toggle">
+                                <i class="fa-solid fa-filter"></i>
+                                Filter
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">Date: Newest First</a>
+                                <a href="#" class="dropdown-item">Date: Oldest First</a>
+                                <a href="#" class="dropdown-item">Status: Processed</a>
+                                <a href="#" class="dropdown-item">Status: Shipped</a>
+                                <a href="#" class="dropdown-item">Status: Delivered</a>
+                                <a href="#" class="dropdown-item">Status: Canceled</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search orders..." class="input">
+                        <button class="btn btn-outline">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Order tabs -->
+                <div class="tabs">
+                    <div class="tabs-list">
+                        <button class="tab-item active" data-tab="all">All Orders</button>
+                        <button class="tab-item" data-tab="processed">Processed</button>
+                        <button class="tab-item" data-tab="shipped">Shipped</button>
+                        <button class="tab-item" data-tab="delivered">Delivered</button>
+                        <button class="tab-item" data-tab="canceled">Canceled</button>
+                        <button class="tab-item" data-tab="delayed">
+                            Delayed
+                            <span class="badge badge-red">2</span>
+                        </button>
+                    </div>
+                    <div class="tab-content active" id="tab-all">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>All Orders</h3>
+                                <p>Manage all your supplier orders in one place.</p>
+                            </div>
+                            <div class="card-content">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Product</th>
+                                                <th>Quantity</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Expected Delivery</th>
+                                                <th>Supplier</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ordersTableBody">
+                                            <!-- Orders will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-outline">Previous</button>
+                                <button class="btn btn-outline">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Order Form (hidden by default) -->
+            <div class="modal" id="orderFormModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="orderFormTitle">Create New Order</h3>
+                        <button class="close-button" id="closeOrderForm">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="orderForm">
+                        <div class="modal-body">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="product">Product</label>
+                                    <input type="text" id="product" class="input" placeholder="Product name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" id="quantity" class="input" min="1" placeholder="Quantity" value="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date">Order Date</label>
+                                    <input type="date" id="date" class="input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="expectedDelivery">Expected Delivery</label>
+                                    <input type="date" id="expectedDelivery" class="input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="supplier">Supplier</label>
+                                    <select id="supplier" class="select">
+                                        <option value="">Select supplier</option>
+                                        <option value="DC Comics Distribution">DC Comics Distribution</option>
+                                        <option value="Marvel Distribution">Marvel Distribution</option>
+                                        <option value="Collectibles Inc.">Collectibles Inc.</option>
+                                        <option value="Manga Imports">Manga Imports</option>
+                                        <option value="Indie Comics Supply">Indie Comics Supply</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select id="status" class="select">
+                                        <option value="processed">Processed</option>
+                                        <option value="shipped">Shipped</option>
+                                        <option value="delivered">Delivered</option>
+                                        <option value="canceled">Canceled</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Notes</label>
+                                <textarea id="notes" class="textarea" placeholder="Additional notes or special instructions"></textarea>
+                            </div>
+                            <div class="form-group" id="delayStatusGroup" style="display: none;">
+                                <label for="hasDelay">Delay Status</label>
+                                <select id="hasDelay" class="select">
+                                    <option value="no">No Delay</option>
+                                    <option value="yes">Delayed</option>
+                                </select>
+                            </div>
+                            <input type="hidden" id="orderId">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline" id="cancelOrderForm">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="submitOrderForm">Create Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/supplier-orders.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Comic Store</title>
+    <link rel="stylesheet" href="../css/admin/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../img/logo.png" alt="Comic Store Logo" class="logo-img">
+                    <span>Comic Store</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <nav class="sidebar-menu">
+                    <ul>
+                        <li class="menu-item active">
+                            <a href="dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="products.html">
+                                <i class="fas fa-book"></i>
+                                <span>Products</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="categories.html">
+                                <i class="fas fa-tags"></i>
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="publishers.html">
+                                <i class="fas fa-building"></i>
+                                <span>Publishers</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="orders.html">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="customers.html">
+                                <i class="fas fa-users"></i>
+                                <span>Customers</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="suppliers.html">
+                                <i class="fas fa-truck"></i>
+                                <span>Suppliers</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="supply-orders.html">
+                                <i class="fas fa-boxes"></i>
+                                <span>Supply Orders</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="users.html">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="reports.html">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="settings.html">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span>AD</span>
+                    </div>
+                    <div class="user-details">
+                        <p class="user-name">Admin User</p>
+                        <p class="user-role">Administrator</p>
+                    </div>
+                </div>
+                <div class="logout-btn">
+                    <a href="login.html" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search...">
+                        <button>
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="header-actions">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <div class="user-dropdown">
+                            <button class="user-dropdown-toggle">
+                                <div class="user-avatar">
+                                    <span>AD</span>
+                                </div>
+                                <span class="user-name">Admin</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="profile.html" class="dropdown-item">
+                                    <i class="fas fa-user"></i>
+                                    Profile
+                                </a>
+                                <a href="settings.html" class="dropdown-item">
+                                    <i class="fas fa-cog"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="login.html" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-card-icon bg-primary">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <h3>Total Orders</h3>
+                            <p class="stat-value">254</p>
+                            <p class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 12.5% from last month
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-icon bg-success">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <h3>Customers</h3>
+                            <p class="stat-value">1,254</p>
+                            <p class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 5.3% from last month
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-icon bg-warning">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <h3>Products</h3>
+                            <p class="stat-value">845</p>
+                            <p class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 8.7% from last month
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-icon bg-info">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <h3>Revenue</h3>
+                            <p class="stat-value">$24,568</p>
+                            <p class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 15.2% from last month
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Widgets -->
+                <div class="dashboard-widgets">
+                    <!-- Recent Orders -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2>Recent Orders</h2>
+                            <a href="orders.html" class="view-all">View All</a>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#ORD-001</td>
+                                            <td>Juan Pérez</td>
+                                            <td>2025-03-05</td>
+                                            <td><span class="badge bg-success">Delivered</span></td>
+                                            <td>$125.00</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#ORD-002</td>
+                                            <td>María González</td>
+                                            <td>2025-03-04</td>
+                                            <td><span class="badge bg-warning">Shipped</span></td>
+                                            <td>$89.50</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#ORD-003</td>
+                                            <td>Carlos Rodríguez</td>
+                                            <td>2025-03-04</td>
+                                            <td><span class="badge bg-primary">Processing</span></td>
+                                            <td>$210.75</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#ORD-004</td>
+                                            <td>Ana Martínez</td>
+                                            <td>2025-03-03</td>
+                                            <td><span class="badge bg-danger">Cancelled</span></td>
+                                            <td>$45.25</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#ORD-005</td>
+                                            <td>Luis Sánchez</td>
+                                            <td>2025-03-02</td>
+                                            <td><span class="badge bg-success">Delivered</span></td>
+                                            <td>$178.30</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Low Stock Products -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2>Low Stock Products</h2>
+                            <a href="products.html" class="view-all">View All</a>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Category</th>
+                                            <th>Publisher</th>
+                                            <th>Current Stock</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Batman: The Dark Knight Returns</td>
+                                            <td>Comics</td>
+                                            <td>DC Comics</td>
+                                            <td><span class="stock-low">3</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Order</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spider-Man: Miles Morales Vol. 1</td>
+                                            <td>Comics</td>
+                                            <td>Marvel</td>
+                                            <td><span class="stock-low">5</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Order</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Watchmen Deluxe Edition</td>
+                                            <td>Graphic Novels</td>
+                                            <td>DC Comics</td>
+                                            <td><span class="stock-low">2</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Order</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>X-Men: Dark Phoenix Saga</td>
+                                            <td>Comics</td>
+                                            <td>Marvel</td>
+                                            <td><span class="stock-low">4</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Order</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sandman Vol. 1</td>
+                                            <td>Graphic Novels</td>
+                                            <td>Vertigo</td>
+                                            <td><span class="stock-low">3</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Order</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Customers & Sales Chart -->
+                    <div class="widget-row">
+                        <div class="widget widget-half">
+                            <div class="widget-header">
+                                <h2>Recent Customers</h2>
+                                <a href="customers.html" class="view-all">View All</a>
+                            </div>
+                            <div class="widget-content">
+                                <div class="recent-customers">
+                                    <div class="customer-item">
+                                        <div class="customer-avatar">
+                                            <img src="../img/placeholder-avatar.png" alt="Customer">
+                                        </div>
+                                        <div class="customer-info">
+                                            <h4>Juan Pérez</h4>
+                                            <p>Registered: 2025-02-15</p>
+                                        </div>
+                                        <div class="customer-status">
+                                            <span class="badge bg-success">Active</span>
+                                        </div>
+                                    </div>
+                                    <div class="customer-item">
+                                        <div class="customer-avatar">
+                                            <img src="../img/placeholder-avatar.png" alt="Customer">
+                                        </div>
+                                        <div class="customer-info">
+                                            <h4>María González</h4>
+                                            <p>Registered: 2025-02-10</p>
+                                        </div>
+                                        <div class="customer-status">
+                                            <span class="badge bg-success">Active</span>
+                                        </div>
+                                    </div>
+                                    <div class="customer-item">
+                                        <div class="customer-avatar">
+                                            <img src="../img/placeholder-avatar.png" alt="Customer">
+                                        </div>
+                                        <div class="customer-info">
+                                            <h4>Carlos Rodríguez</h4>
+                                            <p>Registered: 2025-02-05</p>
+                                        </div>
+                                        <div class="customer-status">
+                                            <span class="badge bg-warning">Pending</span>
+                                        </div>
+                                    </div>
+                                    <div class="customer-item">
+                                        <div class="customer-avatar">
+                                            <img src="../img/placeholder-avatar.png" alt="Customer">
+                                        </div>
+                                        <div class="customer-info">
+                                            <h4>Ana Martínez</h4>
+                                            <p>Registered: 2025-01-28</p>
+                                        </div>
+                                        <div class="customer-status">
+                                            <span class="badge bg-success">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="widget widget-half">
+                            <div class="widget-header">
+                                <h2>Sales Overview</h2>
+                                <div class="widget-actions">
+                                    <select class="select-sm">
+                                        <option>Last 7 Days</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last 90 Days</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="chart-container">
+                                    <canvas id="salesChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Supply Orders -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2>Recent Supply Orders</h2>
+                            <a href="supply-orders.html" class="view-all">View All</a>
+                        </div>
+                        <div class="widget-content">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Supplier</th>
+                                            <th>Order Date</th>
+                                            <th>Status</th>
+                                            <th>Items</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#SUP-001</td>
+                                            <td>DC Comics Distribution</td>
+                                            <td>2025-03-01</td>
+                                            <td><span class="badge bg-success">Delivered</span></td>
+                                            <td>15</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#SUP-002</td>
+                                            <td>Marvel Distribution</td>
+                                            <td>2025-02-28</td>
+                                            <td><span class="badge bg-warning">In Transit</span></td>
+                                            <td>22</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#SUP-003</td>
+                                            <td>Indie Comics Supply</td>
+                                            <td>2025-02-25</td>
+                                            <td><span class="badge bg-primary">Processing</span></td>
+                                            <td>8</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="action-btn" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="action-btn" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/admin/main.js"></script>
+    <script src="../js/admin/dashboard.js"></script>
+</body>
+</html>
+

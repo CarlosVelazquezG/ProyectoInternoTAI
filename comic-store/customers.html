@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management - Comic Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Comic Store Logo" class="logo-img">
+                    <span>Comic Store</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h2>Dashboard</h2>
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">
+                            <i class="fa-solid fa-home"></i>
+                            Home
+                        </a>
+                        <a href="supplier-orders.html" class="nav-link">
+                            <i class="fa-solid fa-truck"></i>
+                            Orders
+                        </a>
+                        <a href="stock.html" class="nav-link">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            Inventory
+                        </a>
+                        <a href="customers.html" class="nav-link active">
+                            <i class="fa-solid fa-users"></i>
+                            Customers
+                        </a>
+                        <a href="store.html" class="nav-link">
+                            <i class="fa-solid fa-store"></i>
+                            Store
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-gear"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div class="user-details">
+                        <p class="user-name">Admin User</p>
+                        <p class="user-email">admin@example.com</p>
+                    </div>
+                    <button class="icon-button">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="menu-button" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h1 class="page-title">Customer Management</h1>
+                <div class="header-actions">
+                    <button class="icon-button">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <div class="dropdown">
+                        <button class="icon-button dropdown-toggle">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">My Account</div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main content area -->
+            <main class="content" id="customerContent">
+                <!-- Customer management tools -->
+                <div class="action-bar">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="newCustomerBtn">
+                            <i class="fa-solid fa-plus"></i>
+                            New Customer
+                        </button>
+                        <div class="dropdown">
+                            <button class="btn btn-outline dropdown-toggle">
+                                <i class="fa-solid fa-filter"></i>
+                                Filter
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">Name: A-Z</a>
+                                <a href="#" class="dropdown-item">Name: Z-A</a>
+                                <a href="#" class="dropdown-item">Registration: Newest First</a>
+                                <a href="#" class="dropdown-item">Registration: Oldest First</a>
+                                <a href="#" class="dropdown-item">Purchases: Highest First</a>
+                                <a href="#" class="dropdown-item">Purchases: Lowest First</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search customers..." class="input">
+                        <button class="btn btn-outline">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Customer tabs -->
+                <div class="tabs">
+                    <div class="tabs-list">
+                        <button class="tab-item active" data-tab="all">All Customers</button>
+                        <button class="tab-item" data-tab="frequent">
+                            Frequent Customers
+                            <span class="badge badge-amber">3</span>
+                        </button>
+                        <button class="tab-item" data-tab="regular">Regular Customers</button>
+                    </div>
+                    <div class="tab-content active" id="tab-all">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>All Customers</h3>
+                                <p>Manage all your customer profiles in one place.</p>
+                            </div>
+                            <div class="card-content">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Customer</th>
+                                                <th>Contact</th>
+                                                <th>Registration Date</th>
+                                                <th>Purchases</th>
+                                                <th>Total Spent</th>
+                                                <th>Last Purchase</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="customersTableBody">
+                                            <!-- Customers will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-outline">Previous</button>
+                                <button class="btn btn-outline">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Customer Form (hidden by default) -->
+            <div class="modal" id="customerFormModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="customerFormTitle">Register New Customer</h3>
+                        <button class="close-button" id="closeCustomerForm">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="customerForm">
+                        <div class="modal-body">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" class="input" placeholder="Full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" class="input" placeholder="Email address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" id="phone" class="input" placeholder="Phone number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="registrationDate">Registration Date</label>
+                                    <input type="date" id="registrationDate" class="input" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea id="address" class="textarea" placeholder="Full address" required></textarea>
+                            </div>
+                            <div id="customerStatsGroup" style="display: none;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="totalPurchases">Total Purchases</label>
+                                        <input type="number" id="totalPurchases" class="input" min="0" placeholder="Total purchases" value="0" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="totalSpent">Total Spent ($)</label>
+                                        <input type="number" id="totalSpent" class="input" min="0" step="0.01" placeholder="Total spent" value="0" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastPurchase">Last Purchase Date</label>
+                                        <input type="date" id="lastPurchase" class="input" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="isFrequent" class="checkbox">
+                                        <label for="isFrequent">Mark as Frequent Customer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Additional Notes</label>
+                                <textarea id="notes" class="textarea" placeholder="Any additional information about the customer"></textarea>
+                            </div>
+                            <input type="hidden" id="customerId">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline" id="cancelCustomerForm">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="submitCustomerForm">Register Customer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Customer Detail (hidden by default) -->
+            <div class="customer-detail" id="customerDetail">
+                <div class="detail-header">
+                    <button class="btn btn-outline" id="backToCustomers">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <h2>Customer Profile</h2>
+                    <button class="btn btn-outline" id="editCustomer">
+                        <i class="fa-solid fa-edit"></i>
+                    </button>
+                </div>
+                <div class="detail-content">
+                    <div class="detail-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Customer Information</h3>
+                                <span class="badge badge-amber" id="frequentBadge" style="display: none;">
+                                    <i class="fa-solid fa-star"></i>
+                                    Frequent Customer
+                                </span>
+                            </div>
+                            <div class="card-content">
+                                <div class="customer-profile">
+                                    <div class="customer-avatar">
+                                        <img src="img/placeholder-avatar.png" alt="Customer Avatar" id="customerAvatar">
+                                        <div class="customer-badge" id="customerBadge" style="display: none;">
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <h3 id="customerName">Customer Name</h3>
+                                    <p id="customerIdDisplay">CUST-ID</p>
+                                </div>
+                                <div class="customer-info">
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <div>
+                                            <p class="info-label">Email</p>
+                                            <p id="customerEmail">email@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <div>
+                                            <p class="info-label">Phone</p>
+                                            <p id="customerPhone">+1 234 567 890</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-map-pin"></i>
+                                        <div>
+                                            <p class="info-label">Address</p>
+                                            <p id="customerAddress">123 Main St, City, Country</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-calendar"></i>
+                                        <div>
+                                            <p class="info-label">Registration Date</p>
+                                            <p id="customerRegDate">2025-01-01</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Customer Overview</h3>
+                                <p>Purchase history and customer statistics</p>
+                            </div>
+                            <div class="card-content">
+                                <div class="tabs">
+                                    <div class="tabs-list">
+                                        <button class="tab-item active" data-tab="stats">Statistics</button>
+                                        <button class="tab-item" data-tab="history">Purchase History</button>
+                                    </div>
+                                    <div class="tab-content active" id="tab-stats">
+                                        <div class="stats-grid">
+                                            <div class="stat-card">
+                                                <h4>Total Purchases</h4>
+                                                <div class="stat-value" id="statTotalPurchases">0</div>
+                                                <p class="stat-label" id="statPurchaseType">Regular customer</p>
+                                            </div>
+                                            <div class="stat-card">
+                                                <h4>Total Spent</h4>
+                                                <div class="stat-value" id="statTotalSpent">$0</div>
+                                                <p class="stat-label">Lifetime value</p>
+                                            </div>
+                                            <div class="stat-card">
+                                                <h4>Last Purchase</h4>
+                                                <div class="stat-value" id="statLastPurchase">N/A</div>
+                                                <p class="stat-label" id="statActivity">Inactive</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content" id="tab-history">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order ID</th>
+                                                        <th>Date</th>
+                                                        <th>Items</th>
+                                                        <th>Total</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="purchaseHistoryTableBody">
+                                                    <!-- Purchase history will be populated by JavaScript -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="noPurchaseHistory" class="empty-state">
+                                            <p>No purchase history available</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/customers.js"></script>
+</body>
+</html>
+

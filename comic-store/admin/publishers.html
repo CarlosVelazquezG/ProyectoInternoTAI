@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publishers Management - Comic Store</title>
+  <link rel="stylesheet" href="../css/admin/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+          <div class="sidebar-header">
+              <div class="logo">
+                  <img src="../img/logo.png" alt="Comic Store Logo" class="logo-img">
+                  <span>Comic Store</span>
+              </div>
+              <button class="sidebar-toggle" id="sidebarToggle">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </div>
+          
+          <div class="sidebar-content">
+              <nav class="sidebar-menu">
+                  <ul>
+                      <li class="menu-item">
+                          <a href="dashboard.html">
+                              <i class="fas fa-tachometer-alt"></i>
+                              <span>Dashboard</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="products.html">
+                              <i class="fas fa-book"></i>
+                              <span>Products</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="categories.html">
+                              <i class="fas fa-tags"></i>
+                              <span>Categories</span>
+                          </a>
+                      </li>
+                      <li class="menu-item active">
+                          <a href="publishers.html">
+                              <i class="fas fa-building"></i>
+                              <span>Publishers</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="orders.html">
+                              <i class="fas fa-shopping-cart"></i>
+                              <span>Orders</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="customers.html">
+                              <i class="fas fa-users"></i>
+                              <span>Customers</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="suppliers.html">
+                              <i class="fas fa-truck"></i>
+                              <span>Suppliers</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="supply-orders.html">
+                              <i class="fas fa-boxes"></i>
+                              <span>Supply Orders</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="users.html">
+                              <i class="fas fa-user-shield"></i>
+                              <span>Users</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="reports.html">
+                              <i class="fas fa-chart-bar"></i>
+                              <span>Reports</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                          <a href="settings.html">
+                              <i class="fas fa-cog"></i>
+                              <span>Settings</span>
+                          </a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+          
+          <div class="sidebar-footer">
+              <div class="user-info">
+                  <div class="user-avatar">
+                      <span>AD</span>
+                  </div>
+                  <div class="user-details">
+                      <p class="user-name">Admin User</p>
+                      <p class="user-role">Administrator</p>
+                  </div>
+              </div>
+              <div class="logout-btn">
+                  <a href="login.html" title="Logout">
+                      <i class="fas fa-sign-out-alt"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Main Content -->
+      <div class="main-content">
+          <!-- Header -->
+          <header class="header">
+              <div class="header-left">
+                  <h1 class="page-title">Publishers Management</h1>
+              </div>
+              <div class="header-right">
+                  <div class="header-search">
+                      <input type="text" placeholder="Search publishers...">
+                      <button>
+                          <i class="fas fa-search"></i>
+                      </button>
+                  </div>
+                  <div class="header-actions">
+                      <button class="notification-btn">
+                          <i class="fas fa-bell"></i>
+                          <span class="badge">3</span>
+                      </button>
+                      <div class="user-dropdown">
+                          <button class="user-dropdown-toggle">
+                              <div class="user-avatar">
+                                  <span>AD</span>
+                              </div>
+                              <span class="user-name">Admin</span>
+                              <i class="fas fa-chevron-down"></i>
+                          </button>
+                          <div class="dropdown-menu">
+                              <a href="profile.html" class="dropdown-item">
+                                  <i class="fas fa-user"></i>
+                                  Profile
+                              </a>
+                              <a href="settings.html" class="dropdown-item">
+                                  <i class="fas fa-cog"></i>
+                                  Settings
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a href="login.html" class="dropdown-item">
+                                  <i class="fas fa-sign-out-alt"></i>
+                                  Logout
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </header>
+          
+          <!-- Publishers Content -->
+          <div class="dashboard-content">
+              <div class="action-bar">
+                  <div class="action-buttons">
+                      <button class="btn btn-primary" id="addPublisherBtn">
+                          <i class="fas fa-plus"></i>
+                          Add New Publisher
+                      </button>
+                      <button class="btn btn-outline">
+                          <i class="fas fa-download"></i>
+                          Export
+                      </button>
+                  </div>
+                  <div class="search-bar">
+                      <input type="text" placeholder="Search publishers..." class="input">
+                      <button class="btn btn-outline">
+                          <i class="fas fa-search"></i>
+                      </button>
+                  </div>
+              </div>
+              
+              <!-- Publishers Table -->
+              <div class="card">
+                  <div class="card-header">
+                      <h3>Publishers List</h3>
+                      <p>Manage your comic publishers</p>
+                  </div>
+                  <div class="card-content">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th>Logo</th>
+                                      <th>Publisher Name</th>
+                                      <th>Country</th>
+                                      <th>Website</th>
+                                      <th>Products Count</th>
+                                      <th>Status</th>
+                                      <th>Actions</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>
+                                          <img src="../img/publishers/dc.png" alt="DC Comics" class="publisher-logo">
+                                      </td>
+                                      <td>DC Comics</td>
+                                      <td>United States</td>
+                                      <td><a href="https://www.dccomics.com" target="_blank">www.dccomics.com</a></td>
+                                      <td>87</td>
+                                      <td><span class="badge bg-success">Active</span></td>
+                                      <td>
+                                          <div class="table-actions">
+                                              <button class="action-btn" title="Edit">
+                                                  <i class="fas fa-edit"></i>
+                                              </button>
+                                              <button class="action-btn" title="Delete">
+                                                  <i class="fas fa-trash"></i>
+                                              </button>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <img src="../img/publishers/marvel.png" alt="Marvel" class="publisher-logo">
+                                      </td>
+                                      <td>Marvel</td>
+                                      <td>United States</td>
+                                      <td><a href="https://www.marvel.com" target="_blank">www.marvel.com</a></td>
+                                      <td>92</td>
+                                      <td><span class="badge bg-success">Active</span></td>
+                                      <td>
+                                          <div class="table-actions">
+                                              <button class="action-btn" title="Edit">
+                                                  <i class="fas fa-edit"></i>
+                                              </button>
+                                              <button class="action-btn" title="Delete">
+                                                  <i class="fas fa-trash"></i>
+                                              </button>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <img src="../img/publishers/image.png" alt="Image Comics" class="publisher-logo">
+                                      </td>
+                                      <td>Image Comics</td>
+                                      <td>United States</td>
+                                      <td><a href="https://imagecomics.com" target="_blank">imagecomics.com</a></td>
+                                      <td>45</td>
+                                      <td><span class="badge bg-success">Active</span></td>
+                                      <td>
+                                          <div class="table-actions">
+                                              <button class="action-btn" title="Edit">
+                                                  <i class="fas fa-edit"></i>
+                                              </button>
+                                              <button class="action-btn" title="Delete">
+                                                  <i class="fas fa-trash"></i>
+                                              </button>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <img src="../img/publishers/darkhorse.png" alt="Dark Horse" class="publisher-logo">
+                                      </td>
+                                      <td>Dark Horse</td>
+                                      <td>United States</td>
+                                      <td><a href="https://www.darkhorse.com" target="_blank">www.darkhorse.com</a></td>
+                                      <td>38</td>
+                                      <td><span class="badge bg-success">Active</span></td>
+                                      <td>
+                                          <div class="table-actions">
+                                              <button class="action-btn" title="Edit">
+                                                  <i class="fas fa-edit"></i>
+                                              </button>
+                                              <button class="action-btn" title="Delete">
+                                                  <i class="fas fa-trash"></i>
+                                              </button>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <img src="../img/publishers/vertigo.png" alt="Vertigo" class="publisher-logo">
+                                      </td>
+                                      <td>Vertigo</td>
+                                      <td>United States</td>
+                                      <td><a href="https://www.dccomics.com/vertigo" target="_blank">www.dccomics.com/vertigo</a></td>
+                                      <td>29</td>
+                                      <td><span class="badge bg-warning">Inactive</span></td>
+                                      <td>
+                                          <div class="table-actions">
+                                              <button class="action-btn" title="Edit">
+                                                  <i class="fas fa-edit"></i>
+                                              </button>
+                                              <button class="action-btn" title="Delete">
+                                                  <i class="fas fa-trash"></i>
+                                              </button>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Add/Edit Publisher Modal -->
+      <div class="modal" id="publisherModal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3 id="publisherModalTitle">Add New Publisher</h3>
+                  <button class="close-button" id="closePublisherModal">
+                      <i class="fas fa-times"></i>
+                  </button>
+              </div>
+              <form id="publisherForm">
+                  <div class="modal-body">
+                      <div class="form-group">
+                          <label for="publisherName">Publisher Name</label>
+                          <input type="text" id="publisherName" class="input" placeholder="Publisher name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="publisherCountry">Country</label>
+                          <input type="text" id="publisherCountry" class="input" placeholder="Country">
+                      </div>
+                      <div class="form-group">
+                          <label for="publisherWebsite">Website</label>
+                          <input type="url" id="publisherWebsite" class="input" placeholder="Website URL">
+                      </div>
+                      <div class="form-group">
+                          <label for="publisherLogo">Logo</label>
+                          <input type="file" id="publisherLogo" class="input">
+                      </div>
+                      <div class="form-group">
+                          <label for="publisherDescription">Description</label>
+                          <textarea id="publisherDescription" class="textarea" placeholder="Publisher description" rows="3"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <div class="checkbox-group">
+                              <input type="checkbox" id="publisherActive" class="checkbox" checked>
+                              <label for="publisherActive">Active</label>
+                          </div>
+                      </div>
+                      <input type="hidden" id="publisherId">
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-outline" id="cancelPublisherForm">Cancel</button>
+                      <button type="submit" class="btn btn-primary" id="submitPublisherForm">Add Publisher</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <script src="../js/admin/main.js"></script>
+  <script src="../js/admin/publishers.js"></script>
+</body>
+</html>
+

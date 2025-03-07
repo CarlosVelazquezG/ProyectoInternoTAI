@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Comic Store</title>
+  <link rel="stylesheet" href="../css/store/styles.css">
+  <link rel="stylesheet" href="../css/store/cart.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+      <div class="header-container">
+          <div class="header-left">
+              <a href="index.html" class="logo">
+                  <img src="../img/logo.png" alt="Comic Store Logo">
+                  <span>Comic Store</span>
+              </a>
+              <nav class="main-nav">
+                  <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="comics.html">Comics</a></li>
+                      <li><a href="graphic-novels.html">Graphic Novels</a></li>
+                      <li><a href="collectibles.html">Collectibles</a></li>
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                  </ul>
+              </nav>
+          </div>
+          <div class="header-right">
+              <div class="search-bar">
+                  <input type="text" placeholder="Search for comics, authors...">
+                  <button><i class="fas fa-search"></i></button>
+              </div>
+              <div class="header-actions">
+                  <a href="account.html" class="header-action">
+                      <i class="fas fa-user"></i>
+                      <span>Account</span>
+                  </a>
+                  <a href="wishlist.html" class="header-action">
+                      <i class="fas fa-heart"></i>
+                      <span>Wishlist</span>
+                  </a>
+                  <a href="cart.html" class="header-action cart active">
+                      <i class="fas fa-shopping-cart"></i>
+                      <span>Cart</span>
+                      <span class="cart-count" id="cartCount">0</span>
+                  </a>
+              </div>
+              <button class="mobile-menu-toggle">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </div>
+      </div>
+  </header>
+  
+  <!-- Mobile Menu (hidden by default) -->
+  <div class="mobile-menu">
+      <div class="mobile-menu-header">
+          <div class="logo">
+              <img src="../img/logo.png" alt="Comic Store Logo">
+              <span>Comic Store</span>
+          </div>
+          <button class="mobile-menu-close">
+              <i class="fas fa-times"></i>
+          </button>
+      </div>
+      <div class="mobile-search">
+          <input type="text" placeholder="Search for comics, authors...">
+          <button><i class="fas fa-search"></i></button>
+      </div>
+      <nav class="mobile-nav">
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="comics.html">Comics</a></li>
+              <li><a href="graphic-novels.html">Graphic Novels</a></li>
+              <li><a href="collectibles.html">Collectibles</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+      </nav>
+      <div class="mobile-actions">
+          <a href="account.html" class="mobile-action">
+              <i class="fas fa-user"></i>
+              <span>Account</span>
+          </a>
+          <a href="wishlist.html" class="mobile-action">
+              <i class="fas fa-heart"></i>
+              <span>Wishlist</span>
+          </a>
+          <a href="cart.html" class="mobile-action">
+              <i class="fas fa-shopping-cart"></i>
+              <span>Cart</span>
+          </a>
+      </div>
+  </div>
+  
+  <!-- Page Header -->
+  <div class="page-header">
+      <div class="container">
+          <h1>Shopping Cart</h1>
+          <div class="breadcrumb">
+              <a href="index.html">Home</a>
+              <span>/</span>
+              <span>Cart</span>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Cart Content -->
+  <section class="cart-section">
+      <div class="container">
+          <div class="cart-container">
+              <div class="cart-items">
+                  <div class="cart-header">
+                      <div class="cart-header-item product-col">Product</div>
+                      <div class="cart-header-item price-col">Price</div>
+                      <div class="cart-header-item quantity-col">Quantity</div>
+                      <div class="cart-header-item subtotal-col">Subtotal</div>
+                      <div class="cart-header-item remove-col"></div>
+                  </div>
+                  
+                  <div id="cartItemsContainer">
+                      <!-- Cart items will be populated by JavaScript -->
+                      <div class="empty-cart" id="emptyCartMessage">
+                          <div class="empty-cart-icon">
+                              <i class="fas fa-shopping-cart"></i>
+                          </div>
+                          <h2>Your cart is empty</h2>
+                          <p>Looks like you haven't added any items to your cart yet.</p>
+                          <a href="comics.html" class="btn btn-primary">Continue Shopping</a>
+                      </div>
+                  </div>
+                  
+                  <div class="cart-actions" id="cartActions" style="display: none;">
+                      <div class="coupon">
+                          <input type="text" placeholder="Coupon code">
+                          <button class="btn btn-outline">Apply Coupon</button>
+                      </div>
+                      <button class="btn btn-outline update-cart">Update Cart</button>
+                  </div>
+              </div>
+              
+              <div class="cart-summary" id="cartSummary" style="display: none;">
+                  <h2>Cart Summary</h2>
+                  <div class="summary-row">
+                      <span>Subtotal</span>
+                      <span id="cartSubtotal">$0.00</span>
+                  </div>
+                  <div class="summary-row">
+                      <span>Shipping</span>
+                      <span id="cartShipping">$0.00</span>
+                  </div>
+                  <div class="summary-row discount" id="discountRow" style="display: none;">
+                      <span>Discount</span>
+                      <span id="cartDiscount">-$0.00</span>
+                  </div>
+                  <div class="summary-row total">
+                      <span>Total</span>
+                      <span id="cartTotal">$0.00</span>
+                  </div>
+                  <a href="checkout.html" class="btn btn-primary checkout-btn">Proceed to Checkout</a>
+                  <a href="comics.html" class="continue-shopping">Continue Shopping</a>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="container">
+          <div class="footer-top">
+              <div class="footer-column">
+                  <div class="footer-logo">
+                      <img src="../img/logo.png" alt="Comic Store Logo">
+                      <span>Comic Store</span>
+                  </div>
+                  <p class="footer-description">Your one-stop shop for comics, graphic novels, and collectibles.</p>
+                  <div class="social-links">
+                      <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                      <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                  </div>
+              </div>
+              
+              <div class="footer-column">
+                  <h3 class="footer-title">Shop</h3>
+                  <ul class="footer-links">
+                      <li><a href="comics.html">Comics</a></li>
+                      <li><a href="graphic-novels.html">Graphic Novels</a></li>
+                      <li><a href="manga.html">Manga</a></li>
+                      <li><a href="collectibles.html">Collectibles</a></li>
+                      <li><a href="new-arrivals.html">New Arrivals</a></li>
+                      <li><a href="bestsellers.html">Bestsellers</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h3 class="footer-title">Account</h3>
+                  <ul class="footer-links">
+                      <li><a href="account.html">My Account</a></li>
+                      <li><a href="orders.html">Orders</a></li>
+                      <li><a href="wishlist.html">Wishlist</a></li>
+                      <li><a href="cart.html">Cart</a></li>
+                      <li><a href="checkout.html">Checkout</a></li>
+                      <li><a href="membership.html">Membership</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h3 class="footer-title">Information</h3>
+                  <ul class="footer-links">
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="faq.html">FAQ</a></li>
+                      <li><a href="shipping.html">Shipping & Returns</a></li>
+                      <li><a href="privacy.html">Privacy Policy</a></li>
+                      <li><a href="terms.html">Terms & Conditions</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-column">
+                  <h3 class="footer-title">Contact</h3>
+                  <ul class="contact-info">
+                      <li>
+                          <i class="fas fa-map-marker-alt"></i>
+                          <span>123 Comic Lane, Metropolis, NY 10001</span>
+                      </li>
+                      <li>
+                          <i class="fas fa-phone"></i>
+                          <span>(123) 456-7890</span>
+                      </li>
+                      <li>
+                          <i class="fas fa-envelope"></i>
+                          <span>info@comicstore.com</span>
+                      </li>
+                      <li>
+                          <i class="fas fa-clock"></i>
+                          <span>Mon-Sat: 9:00 AM - 8:00 PM</span>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          
+          <div class="footer-bottom">
+              <p class="copyright">&copy; 2025 Comic Store. All rights reserved.</p>
+              <div class="payment-methods">
+                  <span>We accept:</span>
+                  <div class="payment-icons">
+                      <i class="fab fa-cc-visa"></i>
+                      <i class="fab fa-cc-mastercard"></i>
+                      <i class="fab fa-cc-amex"></i>
+                      <i class="fab fa-cc-paypal"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+  
+  <script src="../js/store/main.js"></script>
+  <script src="../js/store/cart.js"></script>
+</body>
+</html>
+
